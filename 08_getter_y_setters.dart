@@ -1,8 +1,12 @@
 void main (){
   
-  final mySquare = Square( side:10);
+  // primer metodo de input
+  final mySquare = Square( side: -10);
   
-  mySquare.side = -25;
+  // segundo metodo de input
+  // mySquare.side = -25;
+  
+  // los asserts sirven para poner limites o restricciones
   
   print('area: ${mySquare.area}');
   
@@ -15,7 +19,10 @@ class Square {
   // double son valores numéricos decimales que tienen punto decimal
   
   Square({required double side})
-    : _side = side;
+    : assert(side>=0, 'side must be >=0'),
+      // el segundo parametro que colocamos acac nos permite
+      // mandar un mensaje cuando la asersion salte
+      _side = side;
   
   double get area {
     return _side*_side;
