@@ -1,2 +1,26 @@
 // articulo de referencia
 // https://medium.com/flutter-community/dart-what-are-mixins-3a72344011f3
+// HERENCIA
+
+abstract class Animal {}
+// caracteristicas que comparten todos los animales
+
+abstract class Mamiferos extends Animal {}
+// caracteristicas que solo comparten los mamiferos
+abstract class Aves extends Animal {}
+abstract class Peces extends Animal {}
+
+mixin Volador {
+  void volar() => print('estoy volando');
+}
+
+mixin Caminante {
+  void caminar() => print('estoy caminando');
+}
+
+mixin Nadador {
+  void nadar() => print('estoy nadando');
+}
+
+class Delfin extends Mamiferos with Nadador {}
+class Murcielago extends Mamiferos with Volador, Caminante {}
