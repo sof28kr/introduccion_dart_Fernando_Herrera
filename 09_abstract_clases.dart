@@ -1,9 +1,11 @@
 void main (){
   
   final windPlant = WindPlant(initialEnergy:100);
+  final nuclearPlant = NuclearPlant(energyLeft: 1000);
   
   print (windPlant);
   print ('wind : ${chargePhone(windPlant)}');
+  print ('nuclear : ${chargePhone(nuclearPlant)}');
   
 }
 
@@ -29,7 +31,7 @@ abstract class EnergyPlant {
   
   double energyLeft;
   // String type; // nuclear , eolica, hidraulica
-  PlantType type;
+  final PlantType type;
   
   EnergyPlant({
     required this.energyLeft, 
@@ -41,6 +43,9 @@ abstract class EnergyPlant {
 }
 
 // extends vs implements
+
+//extends 
+// jala todo los metodos
 class WindPlant extends EnergyPlant {
   WindPlant ({required double initialEnergy})
     : super(energyLeft: initialEnergy, type: PlantType.eolica);
@@ -51,6 +56,28 @@ class WindPlant extends EnergyPlant {
   }
 
 }
+
+
+// implements 
+// solo jala un metodo en especifico
+
+class NuclearPlant implements EnergyPlant {
+  
+  @override
+  double energyLeft;
+  
+  @override
+  final PlantType type = PlantType.nuclear;
+  
+  NuclearPlant({required this.energyLeft});
+  
+  @override
+  void consumeEnergy(double amount) {
+    energyLeft -= (amount*0.5); 
+  }
+  
+}
+
 
 
 
