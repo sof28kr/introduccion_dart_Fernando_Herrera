@@ -2,7 +2,9 @@
 // https://medium.com/flutter-community/dart-what-are-mixins-3a72344011f3
 // HERENCIA
 
-abstract class Animal {}
+abstract class Animal {
+  void animalae() => print("no soy una planta");
+}
 // caracteristicas que comparten todos los animales
 
 abstract class Mamiferos extends Animal {}
@@ -11,16 +13,35 @@ abstract class Aves extends Animal {}
 abstract class Peces extends Animal {}
 
 mixin Volador {
-  void volar() => print('estoy volando');
+  void volar() => print('estoy volando~!');
 }
 
 mixin Caminante {
-  void caminar() => print('estoy caminando');
+  void caminar() => print('estoy caminando~!');
 }
 
 mixin Nadador {
-  void nadar() => print('estoy nadando');
+  void nadar() => print('estoy nadando~!');
 }
 
 class Delfin extends Mamiferos with Nadador {}
 class Murcielago extends Mamiferos with Volador, Caminante {}
+class Gato extends Mamiferos with Caminante {}
+
+class Paloma extends Aves with Volador{}
+class Pato extends Aves with Volador, Nadador {}
+
+class Tiburon extends Peces with Nadador {}
+class PezVolador extends Peces with Nadador, Volador {}
+
+void main () {
+  
+  final flipper = Delfin ();
+  print("soy un delfin");
+  flipper.nadar();
+  flipper.animalae();
+  
+  final batman = Murcielago();
+  batman.animalae();
+  batman.volar();
+  batman.caminar();
